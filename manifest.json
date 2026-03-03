@@ -1,0 +1,12 @@
+{
+    "name": "StarkMode Assistant",
+    "version": "1.0",
+    "description": "StarkMode Assistant is a Chrome extension that helps you balance “genius, billionaire mindset” focus with movement breaks. ",
+    "manifest_version": 3,
+    "action":{
+        "default_popup": "index.html"
+        
+    },
+    "permissions":["alarms", "notifications", "storage"]
+
+}
