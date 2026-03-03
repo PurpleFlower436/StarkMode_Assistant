@@ -1,8 +1,9 @@
 const start = document.getElementById("start")
 const timer = document.getElementById("timer")
+const minutesInput = document.getElementById("minutesInput")
 
 
-let timeLeft = 1500
+let timeLeft;
 let interval;
 
 
@@ -26,6 +27,16 @@ const startTimer = () => {
         clearInterval(interval); //Clear any existing interval
     }
 
+    const userMinutes = parseInt(minutesInput.value);
+
+    if (!userMinutes || userMinutes <= 0){
+        alert("Please enter a valid number of minutes.");
+        return;
+    }
+
+    timeLeft = userMinutes * 60;
+    updateTimer();
+    clearInterval(interval);
 
     interval = setInterval(() => {
         timeLeft--;
@@ -34,7 +45,6 @@ const startTimer = () => {
         if (timeLeft === 0) {
             clearInterval(interval);
             alert("Times up time to take a break!")
-            timeLeft = 1500;
             updateTimer();
         }
     }, 1000);
