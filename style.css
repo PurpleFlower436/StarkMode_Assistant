@@ -19,7 +19,9 @@ body{
 
 
 
-
+#suitCooldown {
+    display: none;
+}
 
 .timer{
     font-size: 4em;

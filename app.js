@@ -1,6 +1,8 @@
 const start = document.getElementById("start")
 const timer = document.getElementById("timer")
 const minutesInput = document.getElementById("minutesInput")
+const arcScreen = document.getElementById("arcReactor")
+const breakScreen = document.getElementById("suitCooldown")
 
 
 let timeLeft;
@@ -44,7 +46,8 @@ const startTimer = () => {
 
         if (timeLeft === 0) {
             clearInterval(interval);
-            alert("Times up time to take a break!")
+            arcScreen.style.display="none";
+            breakScreen.style.display = 'block';
             updateTimer();
         }
     }, 1000);
