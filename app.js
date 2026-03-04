@@ -98,6 +98,7 @@ const showYogaPoses = () => {
 
 
 
+    const apiUrl = "https://yoga-api-nzy4.onrender.com/v1"
 
 
 
