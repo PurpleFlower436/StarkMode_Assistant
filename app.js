@@ -86,3 +86,18 @@ const startBreakTimer = () => {
 
 }
 //start.addEventListener("click", startBreakTimer)
+
+
+const showYogaPoses = () => {
+
+    
+
+
+
+
+
+
+
+
+
+}
