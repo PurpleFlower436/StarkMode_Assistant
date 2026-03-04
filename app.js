@@ -4,6 +4,7 @@ const minutesInput = document.getElementById("minutesInput")
 const breakMinutesInput = document.getElementById("breakMinutesInput")
 const arcScreen = document.getElementById("arcReactor")
 const breakScreen = document.getElementById("suitCooldown")
+const userInputModal = document.getElementById("modalForUserContinuingWork")
 
 
 let timeLeft;
@@ -78,9 +79,10 @@ const startBreakTimer = () => {
 
         if (timeLeft === 0) {
             clearInterval(interval);
+            userInputModal.style.display = "block"
             updateTimer();
         }
     }, 1000);
 
 }
-start.addEventListener("click", startBreakTimer)
+//start.addEventListener("click", startBreakTimer)
