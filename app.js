@@ -79,7 +79,7 @@ const startBreakTimer = () => {
 
         if (timeLeft === 0) {
             clearInterval(interval);
-            userInputModal.style.display = "block"
+            //userInputModal.style.display = "block"
             updateTimer();
         }
     }, 1000);
@@ -90,7 +90,13 @@ const startBreakTimer = () => {
 
 const showYogaPoses = () => {
 
-    
+    //Get the picture of the yoga pose and name from the api 
+    // use the setInterval function so that the user holds the pose for one minute and
+    // then it changes to the next pose. We keep doing this until the break timer runs out. 
+    // Once the break timer runs out then we show the modal that asks if the 
+    // user wants to start another work session or stop. If yes then we go back to the arc reactor screen. 
+
+
 
 
 
