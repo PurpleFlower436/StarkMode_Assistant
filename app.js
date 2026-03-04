@@ -83,3 +83,4 @@ const startBreakTimer = () => {
     }, 1000);
 
 }
+start.addEventListener("click", startBreakTimer)
