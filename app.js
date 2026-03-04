@@ -1,6 +1,7 @@
 const start = document.getElementById("start")
 const timer = document.getElementById("timer")
 const minutesInput = document.getElementById("minutesInput")
+const breakMinutesInput = document.getElementById("breakMinutesInput")
 const arcScreen = document.getElementById("arcReactor")
 const breakScreen = document.getElementById("suitCooldown")
 
@@ -54,3 +55,31 @@ const startTimer = () => {
 }
 
 start.addEventListener("click", startTimer)
+
+const startBreakTimer = () => {
+    if (interval) {
+        clearInterval(interval); //Clear any existing interval
+    }
+
+    const userMinutes = parseInt(breakMinutesInput.value);
+
+    if (!userMinutes || userMinutes <= 0){
+        alert("Please enter a valid number of minutes.");
+        return;
+    }
+
+    timeLeft = userMinutes * 60;
+    updateTimer();
+    clearInterval(interval);
+
+    interval = setInterval(() => {
+        timeLeft--;
+        updateTimer();
+
+        if (timeLeft === 0) {
+            clearInterval(interval);
+            updateTimer();
+        }
+    }, 1000);
+
+}
