@@ -26,10 +26,21 @@ const updateTimer = () => {
 };
 
 
+const showBreakScreen = () => {
+    breakScreen.style.display = 'block';
+
+}
+
+
+const hideWorkScreen = () => {
+    arcScreen.style.display="none";
+
+}
+
 const startTimer = () => {
 
     const userMinutes = parseInt(minutesInput.value);
-
+    console.log("work minutes", userMinutes);
     if (isNaN(userMinutes) || userMinutes <= 0){
         alert("Please enter a valid number of minutes.");
         return;
@@ -45,8 +56,6 @@ const startTimer = () => {
 
         if (timeLeft === 0) {
             clearInterval(interval);
-            arcScreen.style.display="none";
-            breakScreen.style.display = 'block';
             updateTimer();
         }
     }, 1000);
@@ -85,35 +94,6 @@ const showYogaPoses = () => {
 
 }
 
-const startBreakTimer = () => {
-    if (interval) {
-        clearInterval(interval); //Clear any existing interval
-    }
 
-    const userMinutes = parseInt(breakMinutesInput.value);
-
-    if (isNaN(userMinutes)|| userMinutes <= 0){
-        alert("Please enter a valid number of minutes.");
-        return;
-    }
-
-    timeLeft = userMinutes * 60;
-    updateTimer();
-    clearInterval(interval);
-
-    interval = setInterval(() => {
-        timeLeft--;
-        updateTimer();
-
-        if (timeLeft === 0) {
-            clearInterval(interval);
-            //userInputModal.style.display = "block"
-            showYogaPoses();
-            updateTimer();
-        }
-    }, 1000);
-
-}
-start.addEventListener("click", startBreakTimer)
 
 
