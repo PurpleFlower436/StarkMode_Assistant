@@ -54,10 +54,15 @@ const showYogaPoses = () => {
         const photoIndex = 0
         const yogaInformationJSON = await fetch("https://yoga-api-nzy4.onrender.com/v1/categories?id=5&level=beginner")
         const yogaInformation = await yogaInformationJSON.json();
-        document.getElementById("photo").innerHTML=`<img src="${yogaInformation.poses[0].url_svg}" width="200">`
-        document.getElementById("yogaPoseName").innerHTML=yogaInformation.poses[0].english_name
+        
+        const yogaPosePhoto = document.getElementById("photo");
+        const yogaPoseName = document.getElementById("yogaPoseName")
 
-        console.log(yogaInformation)
+        yogaPosePhoto.src = yogaInformation.poses[0].url_svg;
+        yogaPoseName.textContent = yogaInformation.poses[0].english_name;
+        
+        
+       
     }
 
 
