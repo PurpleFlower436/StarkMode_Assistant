@@ -13,10 +13,6 @@ let interval;
 
 
 
-startBreakButton.addEventListener("click", () => {
-    startTimer(breakMinutesInput.value);
-
-});
 const updateTimer = (timerDisplayElement) => {
 
     // Calculate full minutes remaining
@@ -42,8 +38,39 @@ const hideWorkScreen = () => {
 
 }
 
-const startTimer = (minutes, timerDisplayElement) => {
+const showYogaPoses = () => {
 
+    //Get the picture of the yoga pose and name from the api 
+    // use the setInterval function so that the user holds the pose for one minute and
+    // then it changes to the next pose. We keep doing this until the break timer runs out. 
+    // Once the break timer runs out then we show the modal that asks if the 
+    // user wants to start another work session or stop. If yes then we go back to the arc reactor screen. 
+
+
+
+    
+
+    async function fetchData(){
+        const photoIndex = 0
+        const yogaInformationJSON = await fetch("https://yoga-api-nzy4.onrender.com/v1/categories?id=5&level=beginner")
+        const yogaInformation = await yogaInformationJSON.json();
+        document.getElementById("photo").innerHTML=`<img src="${yogaInformation.poses[0].url_svg}" width="200">`
+        document.getElementById("yogaPoseName").innerHTML=yogaInformation.poses[0].english_name
+
+        console.log(yogaInformation)
+    }
+
+
+    
+    fetchData()
+
+
+
+
+
+}
+const startTimer = (minutes, timerDisplayElement) => {
+    console.log("Timer element:", timerDisplayElement);
     const userMinutes = parseInt(minutes);
     console.log("work minutes", userMinutes);
     if (isNaN(userMinutes) || userMinutes <= 0){
@@ -76,41 +103,11 @@ start.addEventListener("click", () => {
 });
 startBreakButton.addEventListener("click", () => {
     startTimer(breakMinutesInput.value, breakTimer);
-    showYogaPoses
+    showYogaPoses()
     
 });
 
-const showYogaPoses = () => {
 
-    //Get the picture of the yoga pose and name from the api 
-    // use the setInterval function so that the user holds the pose for one minute and
-    // then it changes to the next pose. We keep doing this until the break timer runs out. 
-    // Once the break timer runs out then we show the modal that asks if the 
-    // user wants to start another work session or stop. If yes then we go back to the arc reactor screen. 
-
-
-
-    
-
-    async function fetchData(){
-        const photoIndex = 0
-        const yogaInformationJSON = await fetch("https://yoga-api-nzy4.onrender.com/v1/categories?id=5&level=beginner")
-        const yogaInformation = yogaInformationJSON.json();
-        document.getElementById("photo").innerHTML=yogaInformation.poses[0].url_svg
-        document.getElementById("yoga pose name").innerHTML=yogaInformation.poses[0].english_name
-
-        console.log(yogaInformation)
-    }
-
-
-    
-    fetchData()
-
-
-
-
-
-}
 
 
 
