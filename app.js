@@ -11,6 +11,11 @@ const breakTimer = document.getElementById("breakTimer")
 let timeLeft;
 let interval;
 
+let poses = []
+let breakPoses = []
+let poseIndex = 0
+let poseInterval
+
 
 
 const updateTimer = (timerDisplayElement) => {
@@ -38,7 +43,7 @@ const hideWorkScreen = () => {
 
 }
 
-const showYogaPoses = () => {
+const loadYogaPoses = () => {
 
     //Get the picture of the yoga pose and name from the api 
     // use the setInterval function so that the user holds the pose for one minute and
@@ -47,33 +52,42 @@ const showYogaPoses = () => {
     // user wants to start another work session or stop. If yes then we go back to the arc reactor screen. 
 
 
-
     
 
+    const yogaPosePhoto = document.getElementById("photo");
+    const yogaPoseName = document.getElementById("yogaPoseName")
+        
+
+
+    yogaPosePhoto.src = ""
+    yogaPoseName.textContent = "Loading yoga pose name"
+    
+    let poses = []
     async function fetchData(){
-        const photoIndex = 0
+        
+       
+
+    
         const yogaInformationJSON = await fetch("https://yoga-api-nzy4.onrender.com/v1/categories?id=5&level=beginner")
         const yogaInformation = await yogaInformationJSON.json();
-        
-        const yogaPosePhoto = document.getElementById("photo");
-        const yogaPoseName = document.getElementById("yogaPoseName")
-
-        yogaPosePhoto.src = yogaInformation.poses[0].url_svg;
-        yogaPoseName.textContent = yogaInformation.poses[0].english_name;
-        
-        
+        poses = yogaInformation.poses || [];
        
     }
 
 
     
     fetchData()
-
-
-
-
-
+    
+    let currentPoseIndex = 0;
+    yogaPosePhoto.src = yogaInformation.poses[i].url_svg;
+    yogaPoseName.textContent = yogaInformation.poses[i].english_name;
 }
+
+
+
+
+
+
 const startTimer = (minutes, timerDisplayElement) => {
     console.log("Timer element:", timerDisplayElement);
     const userMinutes = parseInt(minutes);
@@ -108,7 +122,7 @@ start.addEventListener("click", () => {
 });
 startBreakButton.addEventListener("click", () => {
     startTimer(breakMinutesInput.value, breakTimer);
-    showYogaPoses()
+    loadYogaPoses()
     
 });
 
