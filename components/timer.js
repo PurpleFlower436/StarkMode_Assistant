@@ -1,10 +1,10 @@
 const start = document.getElementById("start")
 const timer = document.getElementById("timer")
-const minutesInput = document.getElementById("minutesInput")
-const breakMinutesInput = document.getElementById("breakMinutesInput")
-const arcScreen = document.getElementById("arcReactor")
-const breakScreen = document.getElementById("suitCooldown")
-const userInputModal = document.getElementById("modalForUserContinuingWork")
+const minutes_input = document.getElementById("minutes_input")
+const break_minutes_input = document.getElementById("break_minutes_input")
+const arc_screen = document.getElementById("arcReactor")
+const break_screen = document.getElementById("suit_cooldown")
+const user_input_modal = document.getElementById("modal_for_user_continuing_work")
 const startBreakButton = document.getElementById("startBreak")
 const breakTimer = document.getElementById("breakTimer")
 
@@ -30,13 +30,13 @@ const updateTimer = (timerDisplayElement) => {
 
 
 const showBreakScreen = () => {
-    breakScreen.style.display = 'block';
+    break_screen.style.display = 'block';
 
 }
 
 
 const hideWorkScreen = () => {
-    arcScreen.style.display="none";
+    arc_screen.style.display="none";
 
 }
 
@@ -73,10 +73,10 @@ const startTimer = (minutes, timerDisplayElement) => {
 }
 
 start.addEventListener("click", () => {
-    startTimer(minutesInput.value, timer);
+    startTimer(minutes_input.value, timer);
 });
 startBreakButton.addEventListener("click", () => {
-    startTimer(breakMinutesInput.value, breakTimer);
+    startTimer(break_minutes_input.value, breakTimer);
     
     
 });
