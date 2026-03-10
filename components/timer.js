@@ -1,5 +1,5 @@
-import { cycle_poses } from "./components/yogaPoses.js"
-import { retrieve_n_poses } from "./components/yogaPoses.js"
+import { cycle_poses } from "./yogaPoses.js"
+import { retrieve_n_poses } from "./yogaPoses.js"
 
 
 
@@ -74,15 +74,18 @@ const startTimer = (minutes, timerDisplayElement) => {
            
         }
     }, 1000);
+    return userMinutes;
 }
 
 start.addEventListener("click", () => {
     startTimer(minutes_input.value, timer);
 });
 startBreakButton.addEventListener("click", () => {
-    startTimer(break_minutes_input.value, breakTimer);
-    portion_of_poses = retrieve_n_poses(userMinutes);
-    cycle_poses(portion_of_poses)
+    const userMinutes = startTimer(break_minutes_input.value, breakTimer);
+    if (userMinutes !== null) {
+        let portion_of_poses = retrieve_n_poses(userMinutes);
+        cycle_poses(portion_of_poses)
+    }
     
     
     

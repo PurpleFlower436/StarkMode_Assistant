@@ -1,3 +1,8 @@
+const yoga_pose_photo = document.getElementById("yoga_pose_image");
+const yoga_pose_name = document.getElementById("yoga_pose_name")
+let interval
+let poses = []
+
 
 // This function is used to preload the yoga poses so theres no lag when the user starts their break
 async function preload_yoga_poses() {
@@ -52,11 +57,11 @@ function shuffle_poses(array) {
 }
 
 
-export function retrieve_n_poses(break_length) {
-    poses = preload_yoga_poses()
-    shuffled_poses_array = shuffle_poses(poses)
+export async function retrieve_n_poses(break_length) {
+    const poses = await preload_yoga_poses()
+    const shuffled_poses_array = shuffle_poses(poses)
 
-    portion_of_poses = shuffled_poses_array.slice(0, break_length)
+    const portion_of_poses = shuffled_poses_array.slice(0, break_length)
 
     return portion_of_poses
 
@@ -66,13 +71,17 @@ export function cycle_poses(array) {
     // We need the setinterval function here so we can cycle through the poses every one minute
     
     
-    const current_index = 0
+    let current_index = 0
 
-    setInterval(() => {
-        array[current_index]
+    yoga_pose_photo.src = array[current_index].url_svg;
+    yoga_pose_name.textContent = array[current_index].english_name;
+    current_index++
+    interval = setInterval(() => {
+        yoga_pose_photo.src = array[current_index].url_svg;
+        yoga_pose_name.textContent = array[current_index].english_name;
         current_index++
         if (current_index === array.length)
-            clearInterval
+            clearInterval(interval)
             // we show the modal here
     }, 60000); 
 
