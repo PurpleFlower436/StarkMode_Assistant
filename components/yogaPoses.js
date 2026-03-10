@@ -1,3 +1,4 @@
+import {break_minutes_input} from './timer.js';
 let poses = []
 let break_poses = []
 let pose_index = 0
@@ -18,6 +19,7 @@ async function preload_yoga_poses() {
         img.src = pose.url_svg
     })
     
+    return poses
 
 }
 
@@ -41,6 +43,12 @@ show pose every 60 seconds
 break ends
 ↓
 stop rotation
+↓
+The modal appears which asks the user if they want to continue another work session.
+They click yes and then we go back to the work screen
+↓
+then we add the settings page at the end which has the toggle switch for light/dark mode
+and music. 
 
 */
 
@@ -51,3 +59,13 @@ function shuffle_poses(array) {
 
 }
 
+
+function retrieve_n_poses(break_length) {
+    poses = preload_yoga_poses()
+    shuffled_poses_array = shuffle_poses(poses)
+
+    portion_of_poses = shuffled_poses_array.slice(0, break_length)
+
+    return portion_of_poses
+
+}
