@@ -1,3 +1,8 @@
+import { cycle_poses } from "./components/yogaPoses.js"
+import { retrieve_n_poses } from "./components/yogaPoses.js"
+
+
+
 const start = document.getElementById("start")
 const timer = document.getElementById("timer")
 const minutes_input = document.getElementById("minutes_input")
@@ -10,7 +15,6 @@ const breakTimer = document.getElementById("breakTimer")
 
 let timeLeft;
 let interval;
-
 
 
 
@@ -77,6 +81,9 @@ start.addEventListener("click", () => {
 });
 startBreakButton.addEventListener("click", () => {
     startTimer(break_minutes_input.value, breakTimer);
+    portion_of_poses = retrieve_n_poses(userMinutes);
+    cycle_poses(portion_of_poses)
+    
     
     
 });
