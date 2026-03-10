@@ -1,11 +1,3 @@
-import {break_minutes_input} from './timer.js';
-let poses = []
-let break_poses = []
-let pose_index = 0
-let pose_interval
-
-
-
 
 // This function is used to preload the yoga poses so theres no lag when the user starts their break
 async function preload_yoga_poses() {
