@@ -80,10 +80,11 @@ const startTimer = (minutes, timerDisplayElement) => {
 start.addEventListener("click", () => {
     startTimer(minutes_input.value, timer);
 });
-startBreakButton.addEventListener("click", () => {
+startBreakButton.addEventListener("click", async () => {
     const userMinutes = startTimer(break_minutes_input.value, breakTimer);
     if (userMinutes !== null) {
-        let portion_of_poses = retrieve_n_poses(userMinutes);
+        const portion_of_poses = await retrieve_n_poses(userMinutes);
+        console.log("Portion of poses before passing to cycle_poses:", portion_of_poses);
         cycle_poses(portion_of_poses)
     }
     
