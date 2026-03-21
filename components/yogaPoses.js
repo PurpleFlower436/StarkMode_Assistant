@@ -119,7 +119,7 @@ export function cycle_poses(array) {
     if (array[0] && array[0].url_svg) {
         yoga_pose_photo.src = array[0].url_svg;
         yoga_pose_name.textContent = array[0].english_name;
-        speak_tony_stark_style(yoga_pose_name.textContent)
+        tony_stark_voice_guide(yoga_pose_name.textContent)
     }
     current_index++; // start interval at the next pose
 
@@ -131,7 +131,7 @@ export function cycle_poses(array) {
         if (array[current_index] && array[current_index].url_svg) {
             yoga_pose_photo.src = array[current_index % array.length].url_svg;
             yoga_pose_name.textContent = array[current_index % array.length].english_name;
-            speak_tony_stark_style(yoga_pose_name.textContent)
+            tony_stark_voice_guide(yoga_pose_name.textContent)
 
         } else {
             console.error(`Pose at index ${current_index} is invalid or missing url_svg`)
